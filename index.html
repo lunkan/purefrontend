@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<title>Pure Frontend</title>
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin-ext,cyrillic" rel="stylesheet" type="text/css"/>
+		
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+		<link rel="stylesheet" href="css/default.css"/>
+		<link rel="stylesheet" href="css/blocks.css"/>
+		
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.js" type="text/javascript"></script>
+		<script src="js/jquery.sticky-block.js" type="text/javascript"></script>
+		<script src="js/script.js" type="text/javascript"></script>
+		
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="js/html5shiv.js"></script>
+		<![endif]-->
+	
+	</head>
+	<body>
+  
+		<!-- import(blocks/header.html) -->
+		
+		<div class="container page">
+			<div class="row">
+				<div class="span12">
+				
+					<section class="main-section">
+						<h1>PureFrontend </h1>
+						<p class="main-section__lead">Powerful front-end script for fast prototyping and clean front-end deliveries. No backend needed - import, repeat and replace elements by pure front-end markup.</p>
+						<a class="btn btn-large btn-primary" href="purefrontend.js" target="_blank">Download PureFrontend</a>
+					</section>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="span9">
+				
+					<section class="section">
+						<h2>What is PureFrontend</h2>
+						<p>PureFrontend use the html comment element to <a href="import.html#import">import</a> or <a href="repeat.html#repeat">repeat</a> markup in order to make templates clean and easy to update.
+						Importent content may contain PureFrontend markup as well. PureFrontend will execute all actions from bottom up - A child element repeat/import will be executed before it's parents.</p>
+						<p>We can also add dummy text by adding a range of "text-variables" to the markup. These variables will be replaced with Lorum ipsum content depending on the variable name.
+						You can find all avalible variables <a href="replace.html#replace">here</a>. Below is an example of PureFrontend markup (Last character is replaced with "*" to prevent the variable from being executed).</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+						<li><span>...</span></li>
+						<li><span></span></li>
+						<li><span>&lt;!-- import(blocks/header.html) --&gt;</span></li>
+						<li><span></span></li>
+						<li><span>&lt;div class=&quot;container&quot;&gt;&lt;/span&gt;</li>
+						<li><span></span></li>
+						<li><span>  &lt;!-- repeat(2) --&gt;</span></li>
+						<li><span>  &lt;div class=&quot;text-block&quot;&gt;</span></li>
+						<li><span>    &lt;h2&gt;{ titl* }&lt;/h2&gt;</span></li>
+						<li><span>    &lt;!-- repeat(3) --&gt;</span></li>
+						<li><span>    &lt;p&gt;{ paragrap* }&lt;/p&gt;</span></li>
+						<li><span>  &lt;/div&gt;</span></li>
+						<li><span></span></li>
+						<li><span>&lt;/div&gt;</span></li>
+						<li><span></span></li>
+						<li><span>...</span></li>
+						</ol></code></pre>
+					</section>
+					
+					<section class="section">
+						<h2>Install PureFrontend</h2>
+						<p>Download PureFrontend and include the js-script at the bottom of the html page. If your page consists of more than one page you must add the js-script at the bottom of all navigable pages. Content imported by the PureFrontend "import-feature" does not need the js-script.</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+							<li><span>    ...</span></li>
+							<li><span>    &lt;script src=&quot;purefrontend.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span></li>
+							<li><span>  &lt;/body&gt;</span></li>
+							<li><span>&lt;/html&gt;</span></li>
+						</ol></code></pre>
+					</section>
+					
+					<section class="section">
+						<h2>PureFrontend on local file system</h2>
+						<p>The main reason to use PureFrontend is that you don't have to bother about servers - any directory in your filesystem will do. For security reason you may find your browser blocking files when imported from the local filesystem.
+						There is different workaround to bypass this restriction depending on what browser you are using.</p>
+						<h3>Chrome</h3>
+						<p>In Chrome you can access local files by adding the project as an extension. Add a manifest file to the directory where your filse to be imported are located.
+						You may copy the code below and replace the files in "web_accessible_resources" with your own file-names. Make sure you save the file as a JSON-file "manifest.json".</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+							<li><span>{</span></li>
+							<li><span>  "name": "File holder",</span></li>
+							<li><span>  "version": "1.0",</span></li>
+							<li><span>  "manifest_version": 2,</span></li>
+							<li><span>  "web_accessible_resources": ["head.html", "footer.html", "header.html"]</span></li>
+							<li><span>}</span></li>
+						</ol></code></pre>
+						<p>After the manifest-file is created - load the extension: Visit chrome://extensions -> check "Developer Mode" and click "Load unpacked extension" to activate it.
+						You will now have your extension visible in the list with an extension-id attached to it. Add the extension-id to your html-templates as described below. Done!</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+							<li><span>    ...</span></li>
+							<li><span>    &lt;script&gt;</span></li>
+							<li><span>      var extensionId = "gjghekipjcljkianfcmhhamhdcndbjde";</span></li>
+							<li><span>    &lt;/script&gt;</span></li>
+							<li><span>    &lt;script src=&quot;purefrontend.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span></li>
+							<li><span>  &lt;/body&gt;</span></li>
+							<li><span>&lt;/html&gt;</span></li>
+						</ol></code></pre>
+					</section>
+				
+				</div>
+				<div class="span3">
+				
+					<!-- import(blocks/lathund.html) -->
+				
+				</div>
+			</div>
+		</div>
+		
+		<!-- import(blocks/footer.html) -->
+
+		<!-- apply pureFrontend -->
+		<script>
+			var extensionId = "hklikjadfimflnhdedoahlmopepjoffp";
+		</script>
+		<script src="purefrontend.js" type="text/javascript"></script>
+	
+	</body>
+</html>

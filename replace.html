@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		
+		<!-- import(blocks/head.html) -->
+	
+	</head>
+	<body>
+  
+		<!-- import(blocks/header.html) -->
+		
+		<div class="container page">
+			<div class="row">
+				<div class="span9">
+	  
+					<section class="section">
+						<h2 id="replace">Replace</h2>
+						<p>You can add dummy text by adding a range of "text-variables" to the markup. These variables will be replaced with Lorum ipsum text/numbers depending on the variable name.</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+							<li><span>{example}</span></li>
+						</ol></code></pre>
+						<h3 id="replace-arguments">Replace arguments</h3>
+						<ul>
+							<li>title</li>
+							<li>excerpt</li>
+							<li>paragraph</li>
+							<li>name</li>
+							<li>phone</li>
+							<li>mail</li>
+							<li>address</li>
+						</ul>
+						<h3 id="conditional-replace">Conditional replace</h3>
+						<p>PureFrontend provides functionality for conditional replace. The function will search the hash of the current url for the first argument - before "?" - and output the second argument if matched.
+						You can also provide a third argument after an additional ":" separator to be printed if search fails.</p>
+						<p>This feature can be handy to add specific classes to elements depending on the pages current state - active for active item in menu etc.</p>
+						<pre class="code-example"><code><ol class="code-example__list">
+							<li><span>{example "question-mark" yes:no}</span></li>
+						</ol></code></pre>
+					</section>
+				
+				</div>
+				<div class="span3">
+				
+					<!-- import(blocks/lathund.html) -->
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- import(blocks/footer.html) -->
+		
+		<!-- apply pureFrontend -->
+		<script>
+			var extensionId = "hklikjadfimflnhdedoahlmopepjoffp";
+		</script>
+		<script src="purefrontend.js" type="text/javascript"></script>
+	
+	</body>
+</html>
