@@ -1,4 +1,3 @@
-﻿
 (function() {
 
 	/**
@@ -212,7 +211,7 @@
 						//Add clones
 						for(var j = 1, jl = numLoops; j <= numLoops; j++) {
 							
-							var clone = cloneElement.cloneNode(false);
+							var clone = cloneElement.cloneNode(true);
 							
 							//replace attributes
 							if(clone.attributes) {
@@ -222,11 +221,12 @@
 								}
 							}
 							
-							//replace content
-							if(cloneElement.innerHTML && cloneElement.firstChild) {
-								
-								var innerHtmlType = cloneElement.firstChild.nodeType;
-								var innerHtmlStr = cloneElement.innerHTML.replace(/\{i\}/, j);
+							//Apply repeat to children after loop (children may have repeaters with random arg)
+							applyRepeat(clone);
+							
+							//Apply index-replace after child elements have been processed (there may be nested repeaters)
+							if(clone.innerHTML) {
+								var innerHtmlStr = clone.innerHTML.replace(/\{i\}/g, j);
 								
 								//IE Compability
 								if(window.ActiveXObject) {
@@ -236,9 +236,6 @@
 									clone.innerHTML = innerHtmlStr;
 								}
 							}
-							
-							//Apply repeat to children after loop (children may have repeaters with random arg)
-							applyRepeat(clone);
 						
 							child.parentNode.insertBefore(clone, cloneElement);
 							child = clone;
@@ -367,6 +364,24 @@
 		
 		return loremTxt;
 	};
+	
+	/**
+	 * Generate Number
+	 */
+	var generateNumber = function(option) {
+			
+		var number = Math.floor(Math.random()*100);
+		return number.toString();
+	};
+	
+	/**
+	 * Generate Decimal
+	 */
+	var generateDecimal = function(option) {
+			
+		var number = Math.random()*100;
+		return number.toString().substring(0, 5);
+	};
 	 
 	/**
 	 * REPLACE
@@ -401,6 +416,12 @@
 		},
 		address : {
 			method: generateStreetAddress
+		},
+		number : {
+			method: generateNumber
+		},
+		decimal : {
+			method: generateDecimal
 		}
 	};
 	
